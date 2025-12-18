@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Victory+ Sports</title>
+  <style>
+    .vp-container {
+      background: #000 !important;
+      color: #fff !important;
+      font-family: Arial, sans-serif;
+      padding: 0;
+      margin: 0;
+      line-height: 1.4;
+      overflow-x: hidden;
+    }
+    .vp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2rem;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+    .vp-logo {
+      display: inline-block;
+      max-height: 150px;
+      max-width: 400px;
+    }
+    .vp-logo img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .vp-sign-in {
+      background: transparent;
+      color: #fff;
+      border: 1px solid #fff;
+      padding: 0.5rem 1.25rem;
+      border-radius: 4px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .vp-hero {
+      position: relative;
+      height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1.5rem;
+      background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
+                  url('visport.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin-bottom: 2rem;
+    }
+    .vp-hero h1 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      color: white;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+      margin: 0 0 1.25rem;
+    }
+    .vp-hero p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      color: #ddd;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .vp-cta-button {
+      background: #d40000;
+      color: white;
+      border: none;
+      padding: 0.85rem 2.25rem;
+      font-size: 1.125rem;
+      font-weight: 700;
+      border-radius: 4px;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 2.5rem;
+    }
+
+    /* === IKLAN === */
+    .vp-ad-slot {
+      max-width: 1000px;
+      margin: 1.5rem auto;
+      text-align: center;
+      background: #222;
+      padding: 1rem;
+      border-radius: 6px;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+    .vp-ad-slot.banner {
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* === EVENTS === */
+    .vp-events-section {
+      padding: 0 2rem 3rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .vp-section-header {
+      text-align: center;
+      margin-bottom: 1.75rem;
+    }
+    .vp-section-header h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #d40000;
+    }
+    .vp-events-grid {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .vp-event-card {
+      width: 320px;
+      background: #111;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .vp-event-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .vp-event-info {
+      padding: 1rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .vp-event-info h3 {
+      font-size: 1.35rem;
+      margin-bottom: 0.25rem;
+    }
+    .vp-event-info p {
+      font-size: 1.1rem;
+      color: #aaa;
+      margin: 0 0 0.75rem 0;
+    }
+    .vp-live-badge {
+      display: inline-block;
+      background: #d40000;
+      color: white;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 3px;
+      margin-bottom: 0.75rem;
+    }
+    .vp-event-button {
+      background: #d40000;
+      color: white;
+      border: none;
+      padding: 0.45rem 0.75rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 4px;
+      text-decoration: none;
+      text-align: center;
+      display: block;
+      margin-top: auto;
+    }
+    .vp-footer {
+      text-align: center;
+      padding: 1.5rem 2rem;
+      color: #888;
+      font-size: 0.875rem;
+      border-top: 1px solid #222;
+      max-width: 1400px;
+      margin: 0 auto;
+      background: #000;
+    }
+    @media (max-width: 768px) {
+      .vp-hero h1 { font-size: 1.8rem; }
+      .vp-hero p { font-size: 1.1rem; }
+      .vp-cta-button { padding: 0.75rem 1.75rem; font-size: 1rem; }
+      .vp-event-card { width: 90%; max-width: 320px; }
+      .vp-event-card img { height: 160px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="vp-container">
+  <header class="vp-header">
+    <a href="https://namakamu.github.io" class="vp-logo">
+      <img src="victory-pre.png" alt="Victory+ Logo" loading="lazy">
+    </a>
+    <a href="https://example.com/login" class="vp-sign-in">Sign In</a>
+  </header>
+
+  <section class="vp-hero">
+    <h1></h1>
+    <p>Texas High School Football is only available for Registered users. Create FREE account to get access to your HD Stream</p>
+    <a href="https://example.com/trial" class="vp-cta-button">CREATE A FREE ACCOUNT</a>
+  </section>
+
+  <section class="vp-events-section">
+    <div class="vp-ad-slot banner">
+      [Iklan 728x90 di sini]
+    </div>
+
+    <div class="vp-section-header">
+      <h2>UPCOMING EVENTS & ON-DEMAND</h2>
+      <p>Catch every game, anytime</p>
+    </div>
+
+    <div class="vp-events-grid">
+      <!-- Event 1 -->
+      <div class="vp-event-card">
+        <img src="eve1.jpeg" alt="Duke vs UNC">
+        <div class="vp-event-info">
+          <span class="vp-live-badge">LIVE NOW</span>
+          <h3>2A DII State Championship</h3>
+          <p>Muenster (13-2) vs. Shiner (15-0)</p>
+          <a href="https://example.com/watch/duke-unc" class="vp-event-button">WATCH NOW</a>
+        </div>
+      </div>
+      <!-- Event 2 -->
+      <div class="vp-event-card">
+        <img src="eve3.png" alt="FSU Baseball">
+        <div class="vp-event-info">
+          <h3>3A DI State Championship</h3>
+          <p>Grandview (13-2) vs. Yoakum (13-2)</p>
+          <a href="https://example.com/watch/fsu-baseball" class="vp-event-button">WATCH NOW</a>
+        </div>
+      </div>
+      <!-- Event 3 -->
+      <div class="vp-event-card">
+        <img src="eve2.jpeg" alt="VT Volleyball">
+        <div class="vp-event-info">
+          <h3>3A DII State Championship</h3>
+          <p>Wall (15-0) vs. Newton (14-1)</p>
+          <a href="https://example.com/event/vt-vb" class="vp-event-button">WATCH NOW</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="vp-ad-slot" style="margin-top: 2rem;">
+      [Iklan persegi / teks di sini]
+    </div>
+  </section>
+
+  <footer class="vp-footer">
+    &copy; 2025 A Parent Media Co. Inc.<br>
+    Victory+ is owned and operated by A Parent Media Co. Inc.<br>
+    All text, graphics, audio files, code, downloadable material, and other works on this website are the copyrighted works of A Parent Media Co. Inc. All Rights Reserved. Any unauthorized redistribution or reproduction of any copyrighted materials on this website is strictly prohibited. Other product and company names are trademarks of their respective owners. This website contains simulated images; actual appearance may vary.
+  </footer>
+</div>
+
+</body>
+</html>

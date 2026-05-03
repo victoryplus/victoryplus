@@ -1,275 +1,380 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Victory+ Sports</title>
-  <style>
-    .vp-container {
-      background: #000 !important;
-      color: #fff !important;
-      font-family: Arial, sans-serif;
-      padding: 0;
-      margin: 0;
-      line-height: 1.4;
-      overflow-x: hidden;
-    }
-    .vp-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.25rem 2rem;
-      max-width: 1440px;
-      margin: 0 auto;
-    }
-    .vp-logo {
-      display: inline-block;
-      max-height: 150px;
-      max-width: 400px;
-    }
-    .vp-logo img {
-      width: auto;
-      height: auto;
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      display: block;
-    }
-    .vp-sign-in {
-      background: transparent;
-      color: #fff;
-      border: 1px solid #fff;
-      padding: 0.5rem 1.25rem;
-      border-radius: 4px;
-      font-weight: 600;
-      text-decoration: none;
-      display: inline-block;
-      cursor: pointer;
-    }
-    .vp-hero {
-      position: relative;
-      height: 70vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 1.5rem;
-      background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
-                  url('visport.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      margin-bottom: 2rem;
-    }
-    .vp-hero h1 {
-      font-size: 2.5rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: -1px;
-      color: white;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.8);
-      margin: 0 0 1.25rem;
-    }
-    .vp-hero p {
-      font-size: 1.25rem;
-      margin-bottom: 2rem;
-      color: #ddd;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .vp-cta-button {
-      background: #d40000;
-      color: white;
-      border: none;
-      padding: 0.85rem 2.25rem;
-      font-size: 1.125rem;
-      font-weight: 700;
-      border-radius: 4px;
-      text-decoration: none;
-      display: inline-block;
-      margin-bottom: 2.5rem;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>SportsLive - Streaming Olahraga Terbaik</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+            color: white;
+            overflow-x: hidden;
+        }
 
-    /* === IKLAN === */
-    .vp-ad-slot {
-      max-width: 1000px;
-      margin: 1.5rem auto;
-      text-align: center;
-      background: #222;
-      padding: 1rem;
-      border-radius: 6px;
-      color: #aaa;
-      font-size: 0.9rem;
-    }
-    .vp-ad-slot.banner {
-      min-height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+        /* Container Hero dengan Background Slideshow */
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
 
-    /* === EVENTS === */
-    .vp-events-section {
-      padding: 0 2rem 3rem;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    .vp-section-header {
-      text-align: center;
-      margin-bottom: 1.75rem;
-    }
-    .vp-section-header h2 {
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: #d40000;
-    }
-    .vp-events-grid {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 0 1rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .vp-event-card {
-      width: 320px;
-      background: #111;
-      border-radius: 10px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-    .vp-event-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-    .vp-event-info {
-      padding: 1rem;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    .vp-event-info h3 {
-      font-size: 1.35rem;
-      margin-bottom: 0.25rem;
-    }
-    .vp-event-info p {
-      font-size: 1.1rem;
-      color: #aaa;
-      margin: 0 0 0.75rem 0;
-    }
-    .vp-live-badge {
-      display: inline-block;
-      background: #d40000;
-      color: white;
-      font-size: 0.75rem;
-      padding: 0.25rem 0.5rem;
-      border-radius: 3px;
-      margin-bottom: 0.75rem;
-    }
-    .vp-event-button {
-      background: #d40000;
-      color: white;
-      border: none;
-      padding: 0.45rem 0.75rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-      border-radius: 4px;
-      text-decoration: none;
-      text-align: center;
-      display: block;
-      margin-top: auto;
-    }
-    .vp-footer {
-      text-align: center;
-      padding: 1.5rem 2rem;
-      color: #888;
-      font-size: 0.875rem;
-      border-top: 1px solid #222;
-      max-width: 1400px;
-      margin: 0 auto;
-      background: #000;
-    }
-    @media (max-width: 768px) {
-      .vp-hero h1 { font-size: 1.8rem; }
-      .vp-hero p { font-size: 1.1rem; }
-      .vp-cta-button { padding: 0.75rem 1.75rem; font-size: 1rem; }
-      .vp-event-card { width: 90%; max-width: 320px; }
-      .vp-event-card img { height: 160px; }
-    }
-  </style>
+        /* Slideshow Background */
+        .slideshow-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        /* Overlay Gradien */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to right, 
+                rgba(15, 23, 42, 0.95) 0%, 
+                rgba(15, 23, 42, 0.7) 50%, 
+                rgba(15, 23, 42, 0.4) 100%
+            );
+            z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+            .hero-overlay {
+                background: linear-gradient(
+                    to bottom, 
+                    rgba(15, 23, 42, 0.9) 0%, 
+                    rgba(15, 23, 42, 0.8) 100%
+                );
+            }
+            .hero-section {
+                padding-top: 60px;
+                text-align: center;
+            }
+        }
+
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-banner {
+            background: #1e293b;
+            border-top: 4px solid #ef4444;
+        }
+
+        .footer-section {
+            background: #111827;
+        }
+
+        /* =========================================================== */
+        /* PERBAIKAN IKLAN: 
+           - Iklan berada PERSIS DI BAWAH tombol Mulai Sekarang
+           - Pada mobile, iklan susun VERTIKAL (tidak bertumpuk)
+           - Pada desktop, iklan bisa horizontal atau vertikal sesuai container
+           - Menggunakan flexbox yang rapi dengan gap yang cukup
+        */
+        /* =========================================================== */
+        
+        .ad-container {
+            width: 100%;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .ad-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            width: 100%;
+        }
+
+        /* Untuk desktop: jika layar cukup lebar, iklan bisa horizontal (tapi tetap rapi) */
+        @media (min-width: 768px) {
+            .ad-wrapper {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+        }
+
+        /* Untuk mobile: tetap vertikal, tidak bertumpuk, masing-masing iklan punya lebar penuh */
+        @media (max-width: 767px) {
+            .ad-wrapper {
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+
+        .ad-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 100%;
+            min-height: 70px;
+        }
+
+        /* Style untuk konten iklan (iframe, ins, script) */
+        .ad-item iframe,
+        .ad-item ins {
+            max-width: 100%;
+            display: block;
+            margin: 0 auto;
+            border: none;
+        }
+
+        /* Fallback styling jika iklan belum siap */
+        .ad-placeholder {
+            width: 100%;
+            padding: 12px;
+            text-align: center;
+            font-size: 11px;
+            color: #64748b;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+        }
+
+        /* Tombol Mulai Sekarang dibuat tetap rapi */
+        .btn-mulai {
+            display: inline-block;
+            width: 100%;
+            max-width: 320px;
+        }
+        
+        @media (min-width: 768px) {
+            .btn-mulai {
+                width: 320px;
+            }
+        }
+
+        /* Bagian kanan stat banner */
+        .stat-right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 1024px) {
+            .stat-right {
+                align-items: flex-end;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<div class="vp-container">
-  <header class="vp-header">
-    <a href="https://namakamu.github.io" class="vp-logo">
-      <img src="victory-pre.png" alt="Victory+ Logo" loading="lazy">
-    </a>
-    <a href="https://example.com/login" class="vp-sign-in">Sign In</a>
-  </header>
-
-  <section class="vp-hero">
-    <h1></h1>
-    <p>Texas High School Football is only available for Registered users. Create FREE account to get access to your HD Stream</p>
-    <a href="https://example.com/trial" class="vp-cta-button">CREATE A FREE ACCOUNT</a>
-  </section>
-
-  <section class="vp-events-section">
-    <div class="vp-ad-slot banner">
-      [Iklan 728x90 di sini]
-    </div>
-
-    <div class="vp-section-header">
-      <h2>UPCOMING EVENTS & ON-DEMAND</h2>
-      <p>Catch every game, anytime</p>
-    </div>
-
-    <div class="vp-events-grid">
-      <!-- Event 1 -->
-      <div class="vp-event-card">
-        <img src="eve1.jpeg" alt="Duke vs UNC">
-        <div class="vp-event-info">
-          <span class="vp-live-badge">LIVE NOW</span>
-          <h3>2A DII State Championship</h3>
-          <p>Muenster (13-2) vs. Shiner (15-0)</p>
-          <a href="https://example.com/watch/duke-unc" class="vp-event-button">WATCH NOW</a>
+    <!-- Navigasi -->
+    <nav class="glass-nav fixed w-full z-50 px-4 md:px-8 py-3 md:py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-xl md:text-2xl font-bold italic text-yellow-400">Sports<span class="text-red-500">Live</span></span>
+            </div>
+            
+            <div class="flex items-center">
+                <a href="URL_SMARTLINK_DISINI" class="bg-white text-purple-900 px-4 md:px-6 py-1.5 md:py-2 rounded-full font-bold hover:bg-yellow-400 transition duration-300 text-xs md:text-sm shadow-lg">Sign In / Register</a>
+            </div>
         </div>
-      </div>
-      <!-- Event 2 -->
-      <div class="vp-event-card">
-        <img src="eve3.png" alt="FSU Baseball">
-        <div class="vp-event-info">
-          <h3>3A DI State Championship</h3>
-          <p>Grandview (13-2) vs. Yoakum (13-2)</p>
-          <a href="https://example.com/watch/fsu-baseball" class="vp-event-button">WATCH NOW</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="slideshow-bg">
+            <div class="slide active" style="background-image: url('All players.jpg');"></div>
+            <div class="slide" style="background-image: url('sportszone-blog.jpg');"></div>
+            <div class="slide" style="background-image: url('allspoo.jpeg');"></div>
         </div>
-      </div>
-      <!-- Event 3 -->
-      <div class="vp-event-card">
-        <img src="eve2.jpeg" alt="VT Volleyball">
-        <div class="vp-event-info">
-          <h3>3A DII State Championship</h3>
-          <p>Wall (15-0) vs. Newton (14-1)</p>
-          <a href="https://example.com/event/vt-vb" class="vp-event-button">WATCH NOW</a>
+        
+        <div class="hero-overlay"></div>
+
+        <div class="max-w-7xl mx-auto px-6 w-full z-10">
+            <div class="max-w-4xl space-y-6">
+                <div class="inline-flex items-center space-x-2 bg-green-500/20 border border-green-500/30 px-3 md:px-4 py-1 rounded-full mb-2">
+                    <span class="relative flex h-2 w-2 md:h-3 md:w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 md:h-3 md:w-3 bg-green-500"></span>
+                    </span>
+                    <span class="text-[10px] md:text-xs font-bold text-green-400 uppercase tracking-widest">
+                        <span id="online-counter">12,450</span> User Sedang Online
+                    </span>
+                </div>
+
+                <h1 class="text-4xl md:text-6xl lg:text-8xl font-bold leading-tight">
+                    Support All <br> <span class="text-yellow-400">Devices</span>
+                </h1>
+                <p class="text-sm md:text-xl text-gray-200 max-w-xl mx-auto md:mx-0 leading-relaxed opacity-90">
+                    Nikmati tayangan olahraga premium di mana saja. Platform kami dioptimalkan sepenuhnya untuk Smart TV, Laptop, Tablet, dan Smartphone Anda.
+                </p>
+                <div class="pt-6 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="URL_SMARTLINK_DISINI" class="bg-blue-600 hover:bg-blue-500 text-white px-8 md:px-10 py-3.5 md:py-4 rounded-full font-bold text-base md:text-lg shadow-2xl transition transform active:scale-95 md:hover:scale-105 text-center">
+                        Free Trial 15 Days
+                    </a>
+                    <a href="URL_SMARTLINK_DISINI" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white px-8 md:px-10 py-3.5 md:py-4 rounded-full font-bold text-base md:text-lg text-center transition active:scale-95">
+                        Daftar VIP
+                    </a>
+                </div>
+                
+                <div class="flex justify-center md:justify-start space-x-2 pt-8 md:pt-12">
+                    <div id="dot-0" class="dot w-8 md:w-12 h-1 bg-yellow-400 rounded-full transition-all"></div>
+                    <div id="dot-1" class="dot w-8 md:w-12 h-1 bg-white/30 rounded-full transition-all"></div>
+                    <div id="dot-2" class="dot w-8 md:w-12 h-1 bg-white/30 rounded-full transition-all"></div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
+    </section>
 
-    <div class="vp-ad-slot" style="margin-top: 2rem;">
-      [Iklan persegi / teks di sini]
-    </div>
-  </section>
+    <!-- Statistik Banner -->
+    <section class="stat-banner py-10 md:py-14 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center text-center lg:text-left gap-8">
+            <!-- Bagian kiri: teks -->
+            <div class="space-y-2">
+                <p class="text-lg md:text-2xl font-bold">Akses olahraga langsung 24/7 tanpa batas.</p>
+                <p class="text-gray-400 text-xs md:text-base">Kualitas Ultra HD 4K khusus untuk member VIP.</p>
+            </div>
+            
+            <!-- Bagian kanan: tombol + iklan (VERTIKAL, iklan di bawah tombol) -->
+            <div class="stat-right">
+                <!-- Tombol Mulai Sekarang (di atas) -->
+                <a href="URL_SMARTLINK_DISINI" class="btn-mulai bg-indigo-600 hover:bg-indigo-500 px-10 md:px-16 py-3 md:py-4 rounded-xl text-white font-bold transition text-center text-lg shadow-xl active:scale-95">
+                    Mulai Sekarang
+                </a>
+                
+                <!-- AREA IKLAN - PERSIS DI BAWAH TOMBOL, RAPI TIDAK BERTUMPUK -->
+                <div class="ad-container">
+                    <div class="ad-wrapper">
+                        <!-- Iklan 1 - Adsterra -->
+                        <div class="ad-item">
+                            <script>
+                                atOptions = {
+                                    'key' : '5550bca4dd907fd57586bc3efc0e01c8',
+                                    'format' : 'iframe',
+                                    'height' : 60,
+                                    'width' : 468,
+                                    'params' : {}
+                                };
+                            </script>
+                            <script src="https://encouragementglutton.com/5550bca4dd907fd57586bc3efc0e01c8/invoke.js"></script>
+                        </div>
+                        
+                        <!-- Iklan 2 - Adsterra -->
+                        <div class="ad-item">
+                            <script>
+                                atOptions = {
+                                    'key' : '5550bca4dd907fd57586bc3efc0e01c8',
+                                    'format' : 'iframe',
+                                    'height' : 60,
+                                    'width' : 468,
+                                    'params' : {}
+                                };
+                            </script>
+                            <script src="https://encouragementglutton.com/5550bca4dd907fd57586bc3efc0e01c8/invoke.js"></script>
+                        </div>
+                    </div>
+                </div>
+                <!-- END AREA IKLAN -->
+            </div>
+        </div>
+    </section>
 
-  <footer class="vp-footer">
-    &copy; 2025 A Parent Media Co. Inc.<br>
-    Victory+ is owned and operated by A Parent Media Co. Inc.<br>
-    All text, graphics, audio files, code, downloadable material, and other works on this website are the copyrighted works of A Parent Media Co. Inc. All Rights Reserved. Any unauthorized redistribution or reproduction of any copyrighted materials on this website is strictly prohibited. Other product and company names are trademarks of their respective owners. This website contains simulated images; actual appearance may vary.
-  </footer>
-</div>
+    <!-- Footer -->
+    <footer class="footer-section pt-16 pb-8 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
+            <div class="text-center md:text-left">
+                <h3 class="text-2xl font-bold mb-4 italic text-yellow-400">SportsLive</h3>
+                <p class="text-gray-400 text-sm md:text-base max-w-sm leading-relaxed mb-6 mx-auto md:mx-0">
+                    Penyedia layanan streaming olahraga terlengkap dengan infrastruktur server global untuk menjamin kelancaran tontonan Anda.
+                </p>
+            </div>
 
-</body>
+            <div class="text-center md:text-left">
+                <h3 class="text-lg font-bold mb-4">Informasi</h3>
+                <div class="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2 text-gray-400 text-xs md:text-sm">
+                    <a href="#" class="hover:text-white transition">Tentang Kami</a>
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">Syarat Layanan</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto border-t border-gray-800 mt-12 pt-6 text-center text-gray-500 text-[10px] md:text-xs tracking-widest uppercase">
+            &copy; 2025 SportsLive Global. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Slideshow Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+        const dots = document.querySelectorAll(".dot");
+
+        function nextSlide() {
+            if (slides.length === 0) return;
+            slides[currentSlide].classList.remove("active");
+            if (dots[currentSlide]) dots[currentSlide].classList.replace("bg-yellow-400", "bg-white/30");
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add("active");
+            if (dots[currentSlide]) dots[currentSlide].classList.replace("bg-white/30", "bg-yellow-400");
+        }
+        
+        // Pastikan slideshow berjalan jika ada slide
+        if (slides.length > 0) {
+            setInterval(nextSlide, 4500);
+        }
+
+        // Online Counter Logic
+        let onlineUsers = 12450;
+        const counterElement = document.getElementById("online-counter");
+        if (counterElement) {
+            function updateCounter() {
+                const increment = Math.floor(Math.random() * 4) + 1;
+                onlineUsers += increment;
+                counterElement.innerText = onlineUsers.toLocaleString('id-ID');
+            }
+            setInterval(updateCounter, 2000);
+        }
+
+        // Informasi di console (hanya untuk admin)
+        console.log("✅ Layout iklan sudah diperbaiki: iklan berada PERSIS DI BAWAH tombol Mulai Sekarang");
+        console.log("✅ Mobile: iklan susun vertikal rapi, tidak bertumpuk");
+        console.log("✅ Desktop: iklan bisa horizontal dengan gap rapi");
+    </script>
+
+   </body>
 </html>
